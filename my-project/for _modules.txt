@@ -1,4 +1,5 @@
-For providing the connection to your local server with the excel sheet for saving the data submite by the customer. Your have to follow intruction given below.
+For providing the connection to your local server with the excel sheet for saving the data submite by the customer.
+Your have to follow intruction given below.
 -Install Node.js
 -Open terminal (write given commnads below)
   -cd your-project-folder

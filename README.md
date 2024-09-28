@@ -1,0 +1,3 @@
+# Hair_Oil_Home_Page
+My first Html based project.
+ This is my current working project based on selling hair oil product online. I made this for practice on HTML code. In this project, I used HTML, some java script portion. I used two hair oil product for sale. In frondend side, When customer click on the 'buy now' button, then their is a form open for taking the customers choice. After submitting the form, in backend side i create a excel sheet for save there data with name, quantity, address and phone no of the customer. There is two excel sheet if mai sheet is open and due to some reason system is not able to send the data to the main sheet then server automaticlly check this and send the data to the dummy sheet of the excel.

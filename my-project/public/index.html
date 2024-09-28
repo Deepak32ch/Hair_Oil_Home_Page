@@ -1,1 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadiwashi Hair Oil</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-image: url('header-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 10px 20px;  /* Increase padding for more vertical space */
+    text-align: center;
+        }
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.2em;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #654321;
+            padding: 15px 0;
+        }
+        nav a {
+            color: white;
+            margin: 0 40px;
+            font-size: 1.1em;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffdd57;
+        }
+        .container {
+            max-width: px;
+            margin: auto;
+            padding: 0px 0px;
+        }
+        .products {
+background-image: url('products-background.jpg');  /* URL of your background image */
+    background-size: cover;  /* Ensures the image covers the entire section */
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px 80px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #333;        }
+        .product-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+        .product-item img {
+            max-width: 9%;
+            height: 30%;
+            border-radius: 10px;
+        }
+        .product-item h3 {
+            margin-top: 15px;
+            font-size: 1.5em;
+            color: #333;
+        }
+        .product-item p {
+            font-size: 0.8em;
+            color: #777;
+        }
+        .product-item .price {
+            font-size: 1.2em;
+            color: #A0522D;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .product-item button {
+            background-color: #8B4513;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        .product-item button:hover {
+            background-color: #ffdd57;
+            color: #8B4513;
+        }
+        footer {
+            background-color: #8B4513;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 0px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.show {
+            display: flex;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            text-align: left;
+            position: relative;
+            animation: slide-in 0.4s ease-out;
+        }
+        .modal-content h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #888;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #333;
+        }
+        .modal input, .modal textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.1em;
+        }
+        .modal button {
+            background-color: #8B4513;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        .modal button:hover {
+            background-color: #ffdd57;
+            color: #8B4513;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            margin: 10px auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #8B4513;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes slide-in {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Aadiwashi Hair Oil</h1>
+        <p>Nurture your hair with the purity of nature</p>
+    </header>
+
+    <nav>
+        <a href="#" onclick="openAboutModal()">About Us</a>
+        <a href="#" onclick="openContactModal()">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section class="products">
+            <!-- First Product -->
+            <div class="product-item">
+                <img src="neelambari1.jpg" alt="Sri Neelambari Aadiwashi Hair Oil">
+                <h3>Sri Neelambari Aadiwashi Hair Oil</h3>
+                <p>Experience our Sri Neelambari Aadiwashi Hair Oil for nourishing your hair.<br> This hair oil is used for prevention of hail fall.</br>Made with traditional Aadiwashi 		herbs.</br>
+		<strong>Main Ingredient : Amla, Bhringraj, Brahmi, Coconut Oil, Sesame Oil.</strong></p>
+                <p class="price">₹899</p>
+                <button onclick="openModal('Sri Neelambari Aadiwashi Hair Oil')">Buy Now</button>
+            </div>
+            <!-- Second Product -->
+            <div class="product-item">
+                <img src="neelambari2.jpg" alt="Neelambari Hakki Pakki Hair Oil">
+                <h3>Neelambari Hakki Pakki Hair Oil</h3>
+                <p>Experience our Hakki Pakki blend for nourishing your hair.<br> This hair oil used for make your hair dense and strong.
+		<br><strong>Main Ingredient : Hibiscus, Neem, Jatamansi, Olive Oil, Mustard Oil.</strong></p>
+                <p class="price">₹799</p>
+                <button onclick="openModal('Neelambari Hakki Pakki Hair Oil')">Buy Now</button>
+            </div>
+		<!-- Add this in your HTML to display real-time orders -->
+		<ul id="order-list"></ul>
+
+        </section>
+	    </div>
+
+    <footer>
+        <p>&copy; 2024 Aadiwashi Hair Oil. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal for Buying -->
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Order Details</h2>
+            <div class="spinner" id="spinner"></div>
+            <input type="hidden" id="productName">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="Enter quantity" min="1">
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName" placeholder="Enter your name">
+            <label for="address">Address:</label>
+            <textarea id="address" rows="4" placeholder="Enter your address"></textarea>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" placeholder="Enter your phone number" maxlength="10">
+            <button onclick="submitOrder()">Submit Order</button>
+        </div>
+    </div>
+
+    <!-- About Us Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAboutModal()">&times;</span>
+            <h2>About Us</h2>
+            <p>We are passionate about bringing the best natural hair oils using traditional Aadiwashi and Hakki Pakki formulations for healthy, strong, and beautiful hair.</p>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <p>For any inquiries, please contact us at: <strong>contact@Aadiwashihairoil.com</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(productName) {
+            document.getElementById('buyModal').classList.add('show');
+            document.getElementById('productName').value = productName;
+        }
+
+        // Function to close the buy modal
+        function closeModal() {
+            document.getElementById('buyModal').classList.remove('show');
+        }
+
+        // Function to handle order submission
+        function submitOrder() {
+            const productName = document.getElementById('productName').value;
+            const quantity = document.getElementById('quantity').value;
+            const customerName = document.getElementById('customerName').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+
+            if (quantity <= 0) {
+                alert('Please enter a valid quantity.');
+                return;
+            }
+            if (customerName === '' || address === '' || phone === '') {
+                alert('Please fill all the fields.');
+                return;
+            }
+            if (!/^\d{10}$/.test(phone)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return;
+            }
+
+            // Create an order object to send
+            const order = {
+                productName: productName,
+                quantity: quantity,
+                customerName: customerName,
+                address: address,
+                phone: phone
+            };
+
+            // Send the data to the backend using the Fetch API
+            fetch('http://localhost:3000/submit-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(order),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Order submitted successfully!');
+                } else {
+                    alert('Error submitting order.');
+                }
+                closeModal();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem with the submission.');
+            });
+        }
+    </script>
+</body>
+</html>
 

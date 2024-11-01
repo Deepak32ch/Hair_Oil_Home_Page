@@ -33,13 +33,15 @@
 <br>HTML: Located in index.html, includes structured sections for header, navigation, products, and modals.
 <br>CSS: Inline styling within index.html for design consistency, including animations and transitions for a smooth user experience.
 <br>JavaScript: Located in a script section at the bottom of index.html, handles:
-    <br>Modal interactions
-    <br>Form validation
-    <br>Order submission
+  <br>Modal interactions
+  <br>Form validation
+  <br>Order submission
 <br><b>Screenshots</b>
 Home Page
+<br>![Screenshot 2024-11-01 224542](https://github.com/user-attachments/assets/ffe50458-d7c3-484f-b0cb-cba17d5ab6d3)
 
 Product Order Modal
+<br>![Screenshot 2024-11-01 224620](https://github.com/user-attachments/assets/bb3213dc-10c0-4fda-98f6-f010ecc8c0b8)
 
 <br><b>Future Enhancements</b>
 <br>Backend Integration: Expand the order processing with a full backend to handle data storage.
